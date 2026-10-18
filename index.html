@@ -30,8 +30,8 @@ h1,h2,p{margin-top:0}h1{font-size:clamp(2.6rem,11vw,5.3rem);line-height:1.02;let
 .heart{font-size:clamp(8rem,35vw,13rem);line-height:1;color:#ff75aa;filter:drop-shadow(0 0 24px #ff75aa66);animation:float 4s ease-in-out infinite}
 .orbit{position:absolute;border:1px solid #ffd47755;border-radius:50%;width:100%;height:75%;animation:float 5s ease-in-out infinite reverse}.orbit:before,.orbit:after{content:"✦";position:absolute;color:var(--gold);font-size:1.4rem}.orbit:before{top:0;left:14%}.orbit:after{bottom:0;right:10%}
 .pill{display:inline-block;border:1px solid #ffd47755;border-radius:999px;padding:8px 13px;color:var(--gold);background:#ffd47712;font-size:.85rem}
-.gallery{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 24px}
-.photo-card{border:1px solid #ffffff35;background:linear-gradient(150deg,#ffffff14,#ffffff05);padding:9px;border-radius:18px;transform:rotate(-1deg);box-shadow:0 12px 30px #0002}.photo-card:nth-child(even){transform:rotate(1.5deg);margin-top:18px}.photo-card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;background:linear-gradient(135deg,#61365b,#2b193a)}.photo-card figcaption{padding:10px 4px 4px;color:#ffe4ec;font-size:.9rem}
+.gallery{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0 24px;align-items:start}
+.photo-card{margin:0!important;min-width:0;width:100%;border:1px solid #ffffff35;background:linear-gradient(150deg,#ffffff14,#ffffff05);padding:8px;border-radius:18px;box-shadow:0 12px 30px #0002;cursor:pointer;transition:transform .2s,box-shadow .2s}.photo-card:active{transform:scale(.98)}.photo-card img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px;background:linear-gradient(135deg,#61365b,#2b193a)}.photo-card figcaption{padding:11px 4px 5px;color:#ffe4ec;font-size:.93rem;line-height:1.4}
 .placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;aspect-ratio:4/5;border-radius:12px;background:radial-gradient(circle at 50% 35%,#ffb7ca33,transparent 35%),linear-gradient(135deg,#58345c,#261533);color:#ffe4ec;padding:12px}.placeholder span:first-child{font-size:3rem}.placeholder small{opacity:.7}
 .cat-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:10px 0 24px}.cat{font-size:2.7rem;display:inline-block;animation:float 2.6s ease-in-out infinite}.cat:nth-child(2){animation-delay:.4s}.cat:nth-child(3){animation-delay:.8s}.cat:nth-child(4){animation-delay:1.2s}
 .memory{border:1px solid #ffd47755;background:linear-gradient(145deg,#ffffff12,#ffffff05);border-radius:24px;padding:clamp(22px,6vw,38px);box-shadow:0 0 45px #ff83b51c;width:100%;text-align:left;margin:18px 0 24px}.memory .to{font-family:"Segoe Print","Comic Sans MS",cursive;color:var(--gold);font-size:1.4rem;font-weight:800}.memory p{font-size:1.05rem;line-height:1.9;color:#fff0e5;margin-bottom:0;white-space:pre-line}
@@ -40,6 +40,18 @@ h1,h2,p{margin-top:0}h1{font-size:clamp(2.6rem,11vw,5.3rem);line-height:1.02;let
 .final-card{border-radius:28px;padding:30px 18px;background:linear-gradient(145deg,#fff5e8,#ffe0e9);color:#7a244d;width:100%;box-shadow:0 0 60px #ff83b544;overflow:hidden}.final-heart{font-size:5rem;filter:drop-shadow(0 8px 18px #ff75aa66);animation:pulse 3s infinite}.final-card h2{color:#c12d68}.final-card p{line-height:1.8}.footer-note{font-size:.78rem;color:#bda7c4;margin-top:28px}
 .confetti{position:fixed;top:-20px;z-index:30;pointer-events:none;font-size:18px;animation:rise var(--dur,4s) linear forwards}
 @media(min-width:620px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.screen{padding-top:44px}.lead{font-size:1.12rem}}
+/* Birthday arrow intro and tap-to-view memories */
+#intro.screen{background:radial-gradient(ellipse at 50% 48%,#ffe3ed 0,#fff6ec 58%,#f8d7e8 100%);color:#7b3155;width:100vw;max-width:none;margin-left:calc(50% - 50vw);padding:34px 22px 50px;min-height:calc(100svh - 65px);overflow:hidden;position:relative}
+#intro .eyebrow{color:#9c5371}#intro h1{color:#a82762;font-size:clamp(2.3rem,10vw,4rem)}#intro .lead{color:#88546c}
+.intro-heart{font-size:clamp(8rem,34vw,12rem);line-height:1;color:#ff438b;filter:drop-shadow(0 0 30px #ff438b99);animation:heartBeat 1.2s ease-in-out infinite;position:relative;z-index:1}
+@keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.09)}30%{transform:scale(1)}45%{transform:scale(1.06)}}
+.arrow-stage{width:min(88vw,390px);height:150px;position:relative;margin:10px auto 8px;touch-action:none}
+.arrow-track{position:absolute;left:8%;right:8%;top:50%;height:3px;background:#d6a4ba;border-radius:4px;transform:translateY(-50%)}
+#pullArrow{position:absolute;left:7%;top:50%;transform:translateY(-50%);font-size:3.5rem;line-height:1;color:#7a4a35;background:transparent;border:0;padding:12px;touch-action:none;user-select:none;cursor:grab;filter:drop-shadow(0 4px 5px #6c3b3244);z-index:3}
+#pullArrow.dragging{cursor:grabbing}#pullArrow.hit{animation:arrowHit .42s ease-in forwards}@keyframes arrowHit{to{left:78%;transform:translateY(-50%) scale(.55) rotate(15deg);opacity:.15}}
+#introHint{font-weight:800;letter-spacing:.18em;color:#9c5371;margin-top:8px}
+#photoModal{position:fixed;inset:0;background:#100719ed;z-index:100;display:none;align-items:center;justify-content:center;padding:18px}#photoModal.open{display:flex}#photoModal .modal-card{width:min(100%,520px);max-height:92svh;overflow:auto;border:1px solid #ffffff44;border-radius:24px;background:linear-gradient(145deg,#35143d,#190d2c);padding:12px;box-shadow:0 0 50px #ff83b544;text-align:center;animation:appear .25s ease both}#modalPhoto{display:block;width:100%;max-height:65svh;object-fit:contain;border-radius:16px;background:#13091c}#modalQuote{font-size:1.15rem;line-height:1.6;color:#ffe4ec;padding:16px 10px 6px}#closeModal{float:right;border:1px solid #ffffff44;border-radius:999px;background:#ffffff12;color:#fff;padding:7px 12px;margin:0 0 8px 8px}
+@media(max-width:390px){.gallery{gap:10px}.photo-card{padding:6px}.photo-card figcaption{font-size:.86rem}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
@@ -47,13 +59,27 @@ h1,h2,p{margin-top:0}h1{font-size:clamp(2.6rem,11vw,5.3rem);line-height:1.02;let
 <div id="sky" aria-hidden="true"></div>
 <header class="topbar"><div class="brand">✦ FOR HARSHITHAA</div><button class="sound" id="musicBtn" aria-label="Toggle generated romantic background music">♫ Start music</button></header>
 <main>
-<section class="screen active" id="welcome">
+
+<section class="screen active" id="intro">
+  <p class="eyebrow">a little something, just for you</p>
+  <div class="intro-heart" id="introHeart" aria-hidden="true">♥</div>
+  <h1>Ready for your<br>birthday surprise?</h1>
+  <p class="lead">Pull the arrow back and release it… 💘</p>
+  <div class="arrow-stage" id="arrowStage">
+    <div class="arrow-track"></div>
+    <button id="pullArrow" aria-label="Pull and release the arrow">➶</button>
+  </div>
+  <p id="introHint">PULL &amp; RELEASE</p>
+  <p class="footer-note" style="color:#9c5371">Made with all my love · Madhan</p>
+</section>
+
+<section class="screen" id="welcome">
 <p class="eyebrow">A tiny universe, made just for you</p>
 <div class="hero-art" aria-hidden="true"><div class="orbit"></div><div class="heart">♥</div></div>
 <h1>Happy Birthday,<br><span class="glowword">Harshithaa!</span></h1>
 <p class="script">You make my world brighter ✨</p>
 <p class="lead">Today is all about you — your smile, your beautiful heart, and every little memory that makes us <em>us</em>.</p>
-<button class="primary next" data-next="memories">Open your surprise ✨</button>
+<button class="primary next" data-next="memories">Let the birthday magic begin ✨</button>
 <p class="footer-note">Made with love, just for you · <span class="year"></span></p>
 </section>
 
@@ -138,30 +164,77 @@ $$(".next").forEach(b=>b.addEventListener("click",()=>show(b.dataset.next)));
 $$(".reason").forEach((b,i)=>b.addEventListener("click",()=>{const lines=["Your laugh is my favourite sound. ✨","The world feels kinder because of your heart. 🌷","You make ordinary days feel special. 💖","Every little memory with you means something to me. 📸","There is no one else quite like you. You are wonderfully you. 🫶"];b.classList.add("revealed");b.querySelector("small").textContent=lines[i];b.setAttribute("aria-pressed","true")}));
 let popped=0;$$(".balloon").forEach((b,i)=>b.addEventListener("click",()=>{if(b.classList.contains("popped"))return;b.classList.add("popped");b.textContent="";popped++;const wishes=["A year full of laughter 💕","All your dreams getting closer ✨","Peace, health and happiness 🌷","Wonderful adventures ahead 🌈","A thousand reasons to smile 💖"];$("#balloonMessage").textContent=wishes[i]+" · "+(5-popped)+" left";if(popped===5){$("#balloonMessage").textContent="All five wishes are yours! Make this year magical ✨";celebrate(35)}}));
 function celebrate(n=35){const emojis=["💗","✨","🌷","💖","🎉","💕"];for(let i=0;i<n;i++){const e=document.createElement("span");e.className="confetti";e.textContent=emojis[Math.floor(Math.random()*emojis.length)];e.style.left=Math.random()*100+"vw";e.style.setProperty("--dur",(3+Math.random()*3)+"s");e.style.animationDelay=(Math.random()*.7)+"s";document.body.appendChild(e);setTimeout(()=>e.remove(),7000)}}
-const musicBtn=$("#musicBtn");let musicOn=false, audioCtx=null, musicNodes=[], musicTimer;
-function startGentleMusic(){
-  const AC=window.AudioContext||window.webkitAudioContext;
-  if(!AC){musicBtn.textContent="Music unavailable";return}
-  audioCtx=audioCtx||new AC();
-  if(audioCtx.state==="suspended")audioCtx.resume();
-  const master=audioCtx.createGain();master.gain.value=0.045;master.connect(audioCtx.destination);musicNodes.push(master);
-  const notes=[261.63,329.63,392.00,493.88,392.00,329.63,293.66,349.23,440.00,523.25,440.00,349.23];
-  notes.forEach((freq,i)=>{
-    const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
-    osc.type="sine";osc.frequency.value=freq;
-    gain.gain.setValueAtTime(0.0001,audioCtx.currentTime+i*0.75);
-    gain.gain.linearRampToValueAtTime(0.6,audioCtx.currentTime+i*0.75+0.18);
-    gain.gain.linearRampToValueAtTime(0.0001,audioCtx.currentTime+i*0.75+1.25);
-    osc.connect(gain);gain.connect(master);osc.start(audioCtx.currentTime+i*0.75);osc.stop(audioCtx.currentTime+i*0.75+1.3);
-    musicNodes.push(osc,gain);
-  });
-  musicTimer=setTimeout(()=>{if(musicOn)startGentleMusic()},9000);
+
+const musicBtn=$("#musicBtn");let musicOn=false,audioCtx=null,musicTimer=null,musicMaster=null,musicStep=0;
+function playTone(freq,when,duration,volume,type="triangle"){
+  const osc=audioCtx.createOscillator(),g=audioCtx.createGain();
+  osc.type=type;osc.frequency.setValueAtTime(freq,when);
+  g.gain.setValueAtTime(0.0001,when);g.gain.exponentialRampToValueAtTime(volume,when+.025);
+  g.gain.exponentialRampToValueAtTime(.0001,when+duration);
+  osc.connect(g);g.connect(musicMaster);osc.start(when);osc.stop(when+duration+.04);
 }
-function stopGentleMusic(){clearTimeout(musicTimer);musicNodes.forEach(n=>{try{if(n.stop)n.stop()}catch(e){};try{n.disconnect()}catch(e){}});musicNodes=[]}
-musicBtn.addEventListener("click",()=>{
-  if(!musicOn){musicOn=true;musicBtn.textContent="♫ Music on";startGentleMusic()}
-  else{musicOn=false;stopGentleMusic();musicBtn.textContent="♫ Start music"}
-});
+function playBeat(when,kind){
+  const osc=audioCtx.createOscillator(),g=audioCtx.createGain();
+  osc.type="sine";osc.frequency.setValueAtTime(kind==="kick"?130:kind==="snare"?210:900,when);
+  if(kind==="kick")osc.frequency.exponentialRampToValueAtTime(48,when+.13);
+  g.gain.setValueAtTime(kind==="hat"?.09:.22,when);g.gain.exponentialRampToValueAtTime(.0001,when+(kind==="hat"?.045:.16));
+  osc.connect(g);g.connect(musicMaster);osc.start(when);osc.stop(when+.18);
+}
+function schedulePartyLoop(){
+ if(!musicOn||!audioCtx)return;
+ const now=audioCtx.currentTime+.04;
+ const melody=[523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,523.25,659.25,783.99,1046.5,987.77,880,783.99,659.25];
+ const bass=[130.81,130.81,164.81,164.81,174.61,174.61,146.83,146.83];
+ for(let i=0;i<16;i++){
+   const t=now+i*.19;
+   playTone(melody[(musicStep+i)%melody.length],t,.22,.17,"triangle");
+   if(i%2===0)playTone(melody[(musicStep+i)%melody.length]/2,t,.28,.10,"sawtooth");
+   if(i%4===0)playTone(bass[((musicStep+i)/2)%bass.length|0],t,.34,.12,"sine");
+   if(i%2===0)playBeat(t,"kick");else playBeat(t,"hat");
+   if(i===2||i===6||i===10||i===14)playBeat(t,"snare");
+ }
+ musicStep=(musicStep+16)%melody.length;
+ musicTimer=setTimeout(schedulePartyLoop,16*.19*1000-30);
+}
+function startPartyMusic(){
+ const AC=window.AudioContext||window.webkitAudioContext;
+ if(!AC){musicBtn.textContent="Audio not supported";return}
+ audioCtx=audioCtx||new AC();
+ if(audioCtx.state==="suspended")audioCtx.resume();
+ musicMaster=audioCtx.createGain();musicMaster.gain.value=.72;musicMaster.connect(audioCtx.destination);
+ schedulePartyLoop();
+}
+function stopPartyMusic(){clearTimeout(musicTimer);musicTimer=null;if(musicMaster){try{musicMaster.gain.setTargetAtTime(.0001,audioCtx.currentTime,.05)}catch(e){};try{musicMaster.disconnect()}catch(e){};musicMaster=null}}
+function toggleMusic(){
+ if(!musicOn){musicOn=true;musicBtn.textContent="♫ Party music ON";startPartyMusic()}
+ else{musicOn=false;stopPartyMusic();musicBtn.textContent="♫ Start party music"}
+}
+musicBtn.addEventListener("click",toggleMusic);
+
+// Tap any photo to see it large with its own quote.
+const photoCards=$$("#gallery .photo-card"),photoModal=$("#photoModal"),modalPhoto=$("#modalPhoto"),modalQuote=$("#modalQuote");
+const quotes=[
+ "Your smile makes even an ordinary day feel magical. 💗",
+ "This is a moment I want to keep in my heart. 🌷",
+ "Beautiful in your own way, every single day. ✨",
+ "A little purple magic, a whole lot of charm. 💜",
+ "Every picture tells a story—and this one is precious. 📸",
+ "Simply unforgettable. That's you, Harshithaa. 💖",
+ "More memories, more smiles, and so many reasons to celebrate you. 🐱"
+];
+let photoIndex=0;
+function openPhoto(i){photoIndex=(i+photoCards.length)%photoCards.length;const img=photoCards[photoIndex].querySelector("img");modalPhoto.src=img.src;modalPhoto.alt=img.alt;modalQuote.textContent=quotes[photoIndex];photoModal.classList.add("open");document.body.style.overflow="hidden"}
+function closePhoto(){photoModal.classList.remove("open");document.body.style.overflow=""}
+photoCards.forEach((card,i)=>{card.setAttribute("tabindex","0");card.setAttribute("role","button");card.setAttribute("aria-label","Open photo memory "+(i+1));card.addEventListener("click",()=>openPhoto(i));card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openPhoto(i)}})});
+$("#closeModal").addEventListener("click",closePhoto);photoModal.addEventListener("click",e=>{if(e.target===photoModal)closePhoto()});$("#nextPhoto").addEventListener("click",()=>openPhoto(photoIndex+1));document.addEventListener("keydown",e=>{if(e.key==="Escape")closePhoto()});
+// Pull the arrow and release it to make it fly into the heart and launch the surprise.
+const pullArrow=$("#pullArrow"),arrowStage=$("#arrowStage");let dragging=false,startX=0,arrowStart=0,launched=false;
+function pointerDown(e){if(launched)return;dragging=true;pullArrow.classList.add("dragging");startX=e.clientX;arrowStart=parseFloat(pullArrow.style.left)||7;pullArrow.setPointerCapture?.(e.pointerId)}
+function pointerMove(e){if(!dragging)return;const dx=e.clientX-startX;const stageW=arrowStage.getBoundingClientRect().width;const delta=(dx/stageW)*100;pullArrow.style.left=Math.max(0,Math.min(82,arrowStart+delta))+"%"}
+function pointerUp(){if(!dragging)return;dragging=false;pullArrow.classList.remove("dragging");launched=true;pullArrow.classList.add("hit");$("#introHeart").style.animation="heartBeat .28s ease-in-out 3";celebrate(55);if(!musicOn){musicOn=true;musicBtn.textContent="♫ Party music ON";startPartyMusic()}setTimeout(()=>{show("welcome");},850)}
+pullArrow.addEventListener("pointerdown",pointerDown);pullArrow.addEventListener("pointermove",pointerMove);pullArrow.addEventListener("pointerup",pointerUp);pullArrow.addEventListener("pointercancel",pointerUp);
+pullArrow.addEventListener("click",()=>{if(!launched)pointerUp()});
+
 $("#replay").addEventListener("click",()=>{popped=0;$$(".balloon").forEach(b=>{b.classList.remove("popped");b.textContent="♡"});$("#balloonMessage").textContent="5 wishes waiting for you ✨";$$(".reason").forEach(b=>{b.classList.remove("revealed");b.querySelector("small").textContent="Tap to reveal ✨"});show("welcome")});
 // The seven personal photos are included as photo1.jpg through photo7.jpg.
 </script>

@@ -1,17 +1,18 @@
-# Harshithaa Birthday Website — photos included
+# Harshithaa Birthday Website — premium update
 
-All seven personal photos are included and connected to the gallery. The website also includes an 18-second birthday video and an original synthesized music option.
+Includes seven personal photos, a pull-and-release arrow intro, a louder upbeat synthesized party melody, tap-to-enlarge photo memories with individual quotes, and the supplied vertical cat-door birthday video at the end.
 
-## Upload to your existing GitHub repository from Android
-1. Download and extract this ZIP.
-2. Open your repository: https://github.com/madhanreddy522-sudo/harshithaa-birthday
-3. Tap **Add file → Upload files**.
-4. Upload `index.html`, `photo1.jpg` through `photo7.jpg`, `birthday-wishes.mp4`, and `video-poster.jpg`.
-5. Scroll down and tap **Commit changes**. If asked to replace `index.html`, confirm.
-6. Keep GitHub Pages set to **main** and **/(root)** in Settings → Pages.
-7. Wait a few minutes, then reload your published site.
+## Upload to your existing GitHub repository
+From the repository root choose **Add file → Upload files** and upload:
+- `index.html`
+- `photo1.jpg` through `photo7.jpg`
+- `birthday-wishes.mp4`
+- `video-poster.jpg`
 
-Keep all these files in the repository root (the same level as `index.html`), not inside another folder. The repository is public, so anyone with the website link may be able to view the uploaded photos.
+Commit changes to `main`. Keep GitHub Pages set to `main` and `/(root)`.
 
-## Music
-Tap **Start music** on the website. The melody is synthesized by the browser, so there is no separate music file or paid service.
+## Important notes
+- The browser-generated party melody starts after the visitor pulls/releases the arrow (a user gesture is required by mobile browsers). Increase the phone's media volume if needed.
+- Tap any gallery photo to open it large with its quote. Tap Next memory to browse.
+- The final video is the 22-second vertical video supplied for this birthday project.
+- This is a public GitHub repository; uploaded photos and video can be viewed by anyone with access to the site.
