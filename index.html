@@ -45,7 +45,7 @@ h1,h2,p{margin-top:0}h1{font-size:clamp(2.6rem,11vw,5.3rem);line-height:1.02;let
 </head>
 <body>
 <div id="sky" aria-hidden="true"></div>
-<header class="topbar"><div class="brand">✦ FOR HARSHITHAA</div><button class="sound" id="musicBtn" aria-label="Toggle background music">♫ Music off</button></header>
+<header class="topbar"><div class="brand">✦ FOR HARSHITHAA</div><button class="sound" id="musicBtn" aria-label="Toggle generated romantic background music">♫ Start music</button></header>
 <main>
 <section class="screen active" id="welcome">
 <p class="eyebrow">A tiny universe, made just for you</p>
@@ -61,10 +61,15 @@ h1,h2,p{margin-top:0}h1{font-size:clamp(2.6rem,11vw,5.3rem);line-height:1.02;let
 <p class="eyebrow">Chapter one · our little moments</p><h2>A walk down<br><span class="glowword">memory lane</span></h2>
 <p class="lead">A few favourite moments, with many more still waiting for us.</p>
 <div class="gallery" id="gallery">
-<figure class="photo-card"><div class="placeholder"><span>📸</span><b>Your favourite photo</b><small>Add photo1.jpg</small></div><figcaption>One of my favourite memories 💗</figcaption></figure>
-<figure class="photo-card"><div class="placeholder"><span>🌷</span><b>A moment with you</b><small>Add photo2.jpg</small></div><figcaption>You make ordinary days special</figcaption></figure>
-<figure class="photo-card"><div class="placeholder"><span>🐱</span><b>Our silly side</b><small>Add photo3.jpg</small></div><figcaption>More smiles, always ✨</figcaption></figure>
+<figure class="photo-card"><img src="photo1.jpg" alt="Harshithaa birthday memory 1" loading="lazy"><figcaption>Your smile makes everything brighter 💗</figcaption></figure>
+<figure class="photo-card"><img src="photo2.jpg" alt="Harshithaa birthday memory 2" loading="lazy"><figcaption>A moment I want to remember 🌷</figcaption></figure>
+<figure class="photo-card"><img src="photo3.jpg" alt="Harshithaa birthday memory 3" loading="lazy"><figcaption>Beautiful in your own way ✨</figcaption></figure>
+<figure class="photo-card"><img src="photo4.jpg" alt="Harshithaa birthday memory 4" loading="lazy"><figcaption>A little purple magic 💜</figcaption></figure>
+<figure class="photo-card"><img src="photo5.jpg" alt="Harshithaa birthday memory 5" loading="lazy"><figcaption>Every picture tells a story 📸</figcaption></figure>
+<figure class="photo-card"><img src="photo6.jpg" alt="Harshithaa birthday memory 6" loading="lazy"><figcaption>Simply unforgettable 💖</figcaption></figure>
+<figure class="photo-card"><img src="photo7.jpg" alt="Harshithaa birthday memory 7" loading="lazy"><figcaption>More memories, more smiles 🐱</figcaption></figure>
 </div>
+
 <div class="cat-row" aria-label="Cute birthday cats"><span class="cat">🐈‍⬛</span><span class="cat">🐈</span><span class="cat">🐱</span><span class="cat">😽</span></div>
 <p class="lead">P.S. The cats have a very important birthday delivery…</p>
 <button class="primary next" data-next="letter">Read your letter 💌</button>
@@ -109,12 +114,20 @@ Happy birthday, my favourite person. ❤️</p><p style="text-align:right;color:
 
 <section class="screen" id="final">
 <p class="eyebrow">One last thing…</p><div class="final-card">
-<div class="final-heart">💗</div><p style="font-style:italic">It's officially your day</p><h2>Happy Birthday,<br>Harshithaa!</h2><p>May your year be filled with soft mornings, big dreams, belly laughs, peaceful days, and all the love your heart can hold.</p><p><b>Keep shining, birthday girl. ✨</b></p><div style="font-size:2.3rem">🌷 🐱 🎂 💖</div></div>
+<div class="final-heart">💗</div><p style="font-style:italic">It's officially your day</p><h2>Happy Birthday,<br>Harshithaa!</h2><p>May your year be filled with soft mornings, big dreams, belly laughs, peaceful days, and all the love your heart can hold.</p><p><b>Keep shining, birthday girl. ✨</b></p><div style="font-size:2.3rem">🌷 🐱 🎂 💖</div>
+<div style="margin-top:22px;width:100%;text-align:center">
+  <p style="font-weight:800;color:#9d2e61;margin-bottom:10px">A little birthday video, just for you 🎬</p>
+  <video controls playsinline preload="metadata" style="width:100%;max-width:360px;border-radius:18px;box-shadow:0 8px 28px #9d2e6133" poster="video-poster.jpg">
+    <source src="birthday-wishes.mp4" type="video/mp4">
+    Your browser does not support this video.
+  </video>
+  <p style="font-size:.85rem;margin-top:10px">With love, Madhan ❤️</p>
+</div></div>
 <p class="lead" style="margin-top:24px">No website could fit all the reasons you matter to me — but I hope this little one makes you smile.</p>
 <button class="primary" id="replay">Relive the surprise ↻</button><p class="footer-note">Forever cheering for you · Madhan ❤️</p>
 </section>
 </main>
-<audio id="bgMusic" loop preload="none"><source src="romantic-music.mp3" type="audio/mpeg"></audio>
+
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 // Decorative stars
@@ -125,12 +138,32 @@ $$(".next").forEach(b=>b.addEventListener("click",()=>show(b.dataset.next)));
 $$(".reason").forEach((b,i)=>b.addEventListener("click",()=>{const lines=["Your laugh is my favourite sound. ✨","The world feels kinder because of your heart. 🌷","You make ordinary days feel special. 💖","Every little memory with you means something to me. 📸","There is no one else quite like you. You are wonderfully you. 🫶"];b.classList.add("revealed");b.querySelector("small").textContent=lines[i];b.setAttribute("aria-pressed","true")}));
 let popped=0;$$(".balloon").forEach((b,i)=>b.addEventListener("click",()=>{if(b.classList.contains("popped"))return;b.classList.add("popped");b.textContent="";popped++;const wishes=["A year full of laughter 💕","All your dreams getting closer ✨","Peace, health and happiness 🌷","Wonderful adventures ahead 🌈","A thousand reasons to smile 💖"];$("#balloonMessage").textContent=wishes[i]+" · "+(5-popped)+" left";if(popped===5){$("#balloonMessage").textContent="All five wishes are yours! Make this year magical ✨";celebrate(35)}}));
 function celebrate(n=35){const emojis=["💗","✨","🌷","💖","🎉","💕"];for(let i=0;i<n;i++){const e=document.createElement("span");e.className="confetti";e.textContent=emojis[Math.floor(Math.random()*emojis.length)];e.style.left=Math.random()*100+"vw";e.style.setProperty("--dur",(3+Math.random()*3)+"s");e.style.animationDelay=(Math.random()*.7)+"s";document.body.appendChild(e);setTimeout(()=>e.remove(),7000)}}
-const audio=$("#bgMusic"), musicBtn=$("#musicBtn");let musicOn=false;
-musicBtn.addEventListener("click",async()=>{if(!musicOn){try{await audio.play();musicOn=true;musicBtn.textContent="♫ Music on"}catch(e){musicBtn.textContent="Add music file first";setTimeout(()=>musicBtn.textContent="♫ Music off",2200)}}else{audio.pause();musicOn=false;musicBtn.textContent="♫ Music off"}});
+const musicBtn=$("#musicBtn");let musicOn=false, audioCtx=null, musicNodes=[], musicTimer;
+function startGentleMusic(){
+  const AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC){musicBtn.textContent="Music unavailable";return}
+  audioCtx=audioCtx||new AC();
+  if(audioCtx.state==="suspended")audioCtx.resume();
+  const master=audioCtx.createGain();master.gain.value=0.045;master.connect(audioCtx.destination);musicNodes.push(master);
+  const notes=[261.63,329.63,392.00,493.88,392.00,329.63,293.66,349.23,440.00,523.25,440.00,349.23];
+  notes.forEach((freq,i)=>{
+    const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+    osc.type="sine";osc.frequency.value=freq;
+    gain.gain.setValueAtTime(0.0001,audioCtx.currentTime+i*0.75);
+    gain.gain.linearRampToValueAtTime(0.6,audioCtx.currentTime+i*0.75+0.18);
+    gain.gain.linearRampToValueAtTime(0.0001,audioCtx.currentTime+i*0.75+1.25);
+    osc.connect(gain);gain.connect(master);osc.start(audioCtx.currentTime+i*0.75);osc.stop(audioCtx.currentTime+i*0.75+1.3);
+    musicNodes.push(osc,gain);
+  });
+  musicTimer=setTimeout(()=>{if(musicOn)startGentleMusic()},9000);
+}
+function stopGentleMusic(){clearTimeout(musicTimer);musicNodes.forEach(n=>{try{if(n.stop)n.stop()}catch(e){};try{n.disconnect()}catch(e){}});musicNodes=[]}
+musicBtn.addEventListener("click",()=>{
+  if(!musicOn){musicOn=true;musicBtn.textContent="♫ Music on";startGentleMusic()}
+  else{musicOn=false;stopGentleMusic();musicBtn.textContent="♫ Start music"}
+});
 $("#replay").addEventListener("click",()=>{popped=0;$$(".balloon").forEach(b=>{b.classList.remove("popped");b.textContent="♡"});$("#balloonMessage").textContent="5 wishes waiting for you ✨";$$(".reason").forEach(b=>{b.classList.remove("revealed");b.querySelector("small").textContent="Tap to reveal ✨"});show("welcome")});
-// Optional local photos: add photo1.jpg, photo2.jpg, photo3.jpg alongside this file.
-const photoCaptions=["One of my favourite memories 💗","You make ordinary days special","More smiles, always ✨"];
-["photo1.jpg","photo2.jpg","photo3.jpg"].forEach((file,i)=>{const img=new Image();img.src=file;img.alt=photoCaptions[i];img.onload=()=>{const card=$$(".photo-card")[i];const holder=card.querySelector(".placeholder");holder.replaceWith(img)};img.onerror=()=>{}});
+// The seven personal photos are included as photo1.jpg through photo7.jpg.
 </script>
 </body>
 </html>
